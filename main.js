@@ -1,43 +1,74 @@
-// Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
-const path = require('path')
 
 function createWindow () {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+    height: 600
+  })
+
+  let grantedDeviceThroughPermHandler
+
+  mainWindow.webContents.session.on('select-usb-device', (event, details, callback) => {
+    // Add events to handle devices being added or removed before the callback on
+    // `select-usb-device` is called.
+    mainWindow.webContents.session.on('usb-device-added', (event, device) => {
+      console.log('usb-device-added FIRED WITH', device)
+      // Optionally update details.deviceList
+    })
+
+    mainWindow.webContents.session.on('usb-device-removed', (event, device) => {
+      console.log('usb-device-removed FIRED WITH', device)
+      // Optionally update details.deviceList
+    })
+
+    event.preventDefault()
+    if (details.deviceList && details.deviceList.length > 0) {
+      const deviceToReturn = details.deviceList.find((device) => {
+        return !grantedDeviceThroughPermHandler || (device.deviceId !== grantedDeviceThroughPermHandler.deviceId)
+      })
+      if (deviceToReturn) {
+        callback(deviceToReturn.deviceId)
+      } else {
+        callback()
+      }
     }
   })
 
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.webContents.session.setPermissionCheckHandler((webContents, permission, requestingOrigin, details) => {
+    if (permission === 'usb' && details.securityOrigin === 'file:///') {
+      return true
+    }
+  })
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.session.setDevicePermissionHandler((details) => {
+    if (details.deviceType === 'usb' && details.origin === 'file://') {
+      if (!grantedDeviceThroughPermHandler) {
+        grantedDeviceThroughPermHandler = details.device
+        return true
+      } else {
+        return false
+      }
+    }
+  })
+
+  mainWindow.webContents.session.setUSBProtectedClassesHandler((details) => {
+    return details.protectedClasses.filter((usbClass) => {
+      // Exclude classes except for audio classes
+      return usbClass.indexOf('audio') === -1
+    })
+  })
+
+  mainWindow.loadFile('index.html')
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
 
   app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
