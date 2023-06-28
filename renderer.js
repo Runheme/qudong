@@ -1,18 +1,31 @@
+function getDeviceDetails (device) {
+  return device.productName || `Unknown device ${device.deviceId}`
+}
+
 async function testIt () {
-  const grantedDevices = await navigator.hid.getDevices()
+  const noDevicesFoundMsg = 'No devices found'
+  const grantedDevices = await navigator.usb.getDevices()
   let grantedDeviceList = ''
-  grantedDevices.forEach(device => {
-    grantedDeviceList += `<hr>${device.productName}</hr>`
-  })
+  if (grantedDevices.length > 0) {
+    grantedDevices.forEach(device => {
+      grantedDeviceList += `<hr>${getDeviceDetails(device)}</hr>`
+    })
+  } else {
+    grantedDeviceList = noDevicesFoundMsg
+  }
   document.getElementById('granted-devices').innerHTML = grantedDeviceList
-  const grantedDevices2 = await navigator.hid.requestDevice({
-    filters: []
-  })
 
   grantedDeviceList = ''
-  grantedDevices2.forEach(device => {
-    grantedDeviceList += `<hr>${device.productName}</hr>`
-  })
+  try {
+    const grantedDevice = await navigator.usb.requestDevice({
+      filters: []
+    })
+    grantedDeviceList += `<hr>${getDeviceDetails(grantedDevice)}</hr>`
+  } catch (ex) {
+    if (ex.name === 'NotFoundError') {
+      grantedDeviceList = noDevicesFoundMsg
+    }
+  }
   document.getElementById('granted-devices2').innerHTML = grantedDeviceList
 }
 
