@@ -1,2 +1,5 @@
+.DS_STORE
+.snowpack
+build
 node_modules
-out
+public/definitions
