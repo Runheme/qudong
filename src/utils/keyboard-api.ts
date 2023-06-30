@@ -460,7 +460,7 @@ export class KeyboardAPI {
   }
 
   async saveLighting() {
-    await this.hidCommand(APICommand.BACKLIGHT_CONFIG_SAVE);
+    await this.hidCommand(APICommand._CONFIG_SAVE);
   }
 
   async resetEEPROM() {

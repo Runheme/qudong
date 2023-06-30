@@ -264,9 +264,9 @@ export const Debug: FC = () => {
         <Container>
           {/* <GithubUserData /> */}
           <ControlGroup>
-            <ControlGroupHeader>Key Testing</ControlGroupHeader>
+            <ControlGroupHeader>按键测试</ControlGroupHeader>
             <ControlRow>
-              <Label>Show Matrix</Label>
+              <Label>显示矩阵</Label>
               <Detail>
                 <AccentSlider
                   isChecked={showMatrix}
@@ -275,7 +275,7 @@ export const Debug: FC = () => {
               </Detail>
             </ControlRow>
             <ControlRow>
-              <Label>Set next key</Label>
+              <Label>设置下一个键</Label>
               <Detail>
                 <AccentButton
                   onClick={() => {
@@ -293,16 +293,16 @@ export const Debug: FC = () => {
                     }
                   }}
                 >
-                  Next
+                  下一个
                 </AccentButton>
               </Detail>
             </ControlRow>
           </ControlGroup>
           {options && (
             <ControlGroup>
-              <ControlGroupHeader>Layout Testing</ControlGroupHeader>
+              <ControlGroupHeader>布局测试</ControlGroupHeader>
               <ControlRow>
-                <Label>Dummy Keyboard</Label>
+                <Label>虚拟键盘</Label>
                 <Detail>
                   <AccentSelect
                     onChange={(option: any) =>
@@ -326,34 +326,34 @@ export const Debug: FC = () => {
           {api && (
             <ControlGroup>
               <ControlGroupHeader>
-                Connected Device Debugging
+              连接设备调试
               </ControlGroupHeader>
               <ControlRow>
-                <Label>EEPROM Reset</Label>
+                <Label>eepm重置</Label>
                 <Detail>
                   <AccentButton onClick={() => api.resetEEPROM()}>
-                    Reset
+                    重置
                   </AccentButton>
                 </Detail>
               </ControlRow>
               <ControlRow>
-                <Label>Bootloader Jump</Label>
+                <Label>Bootloader 跳转</Label>
                 <Detail>
                   <AccentButton onClick={() => api.jumpToBootloader()}>
-                    Jump
+                    跳转
                   </AccentButton>
                 </Detail>
               </ControlRow>
               <ControlRow>
-                <Label>Clear all macros</Label>
+                <Label>清除所有宏</Label>
                 <Detail>
                   <AccentButton onClick={() => api.resetMacros()}>
-                    Clear
+                    清除
                   </AccentButton>
                 </Detail>
               </ControlRow>
               <ControlRow>
-                <Label>Benchmark Switch State Query Speed</Label>
+                <Label>基准交换机状态查询速度</Label>
                 <Detail>
                   <AccentButton
                     onClick={async () => {
@@ -374,17 +374,17 @@ export const Debug: FC = () => {
                       );
                     }}
                   >
-                    Benchmark
+                    基准
                   </AccentButton>
                 </Detail>
               </ControlRow>
             </ControlGroup>
           )}
           <ControlGroup>
-            <ControlGroupHeader>Device IDs</ControlGroupHeader>
+            <ControlGroupHeader>设备id</ControlGroupHeader>
             <ControlRow>
-              <Label>Connected Devices</Label>
-              <Detail>{Object.values(connectedDevices).length} Devices</Detail>
+              <Label>连接设备</Label>
+              <Detail>{Object.values(connectedDevices).length} 个设备</Detail>
             </ControlRow>
             {Object.values(connectedDevices).map((device) => {
               const definitionEntry = allDefinitions.find(
@@ -411,9 +411,9 @@ export const Debug: FC = () => {
               return null;
             })}
             <ControlRow>
-              <Label>Local definitions</Label>
+              <Label>本地定义</Label>
               <Detail>
-                {Object.values(localDefinitions).length} Definitions
+                {Object.values(localDefinitions).length} 定义
               </Detail>
             </ControlRow>
             {Object.values(localDefinitions).map(([id, definition], idx) => (
@@ -428,9 +428,9 @@ export const Debug: FC = () => {
             <ControlRow>
               <details>
                 <summary>
-                  <Label>Remote definitions</Label>
+                  <Label>远程定义</Label>
                   <Detail>
-                    {Object.values(remoteDefinitions).length} Definitions
+                    {Object.values(remoteDefinitions).length} 个定义
                   </Detail>
                 </summary>
                 {Object.values(remoteDefinitions).map(

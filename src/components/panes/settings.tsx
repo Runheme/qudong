@@ -95,7 +95,7 @@ export const Settings = () => {
             <Row $selected={true}>
               <IconContainer>
                 <FontAwesomeIcon icon={faToolbox} />
-                <MenuTooltip>General</MenuTooltip>
+                <MenuTooltip>设置</MenuTooltip>
               </IconContainer>
             </Row>
           </MenuContainer>
@@ -103,7 +103,7 @@ export const Settings = () => {
         <SpanOverflowCell style={{flex: 1, borderWidth: 0}}>
           <Container>
             <ControlRow>
-              <Label>Show Design tab</Label>
+              <Label>json加载页面</Label>
               <Detail>
                 <AccentSlider
                   onChange={() => dispatch(toggleCreatorMode())}
@@ -111,17 +111,17 @@ export const Settings = () => {
                 />
               </Detail>
             </ControlRow>
-            <ControlRow>
-              <Label>Fast Key Mapping</Label>
+            {/* <ControlRow>
+              <Label>快速键映射</Label>
               <Detail>
                 <AccentSlider
                   onChange={() => dispatch(toggleFastRemap())}
                   isChecked={!disableFastRemap}
                 />
               </Detail>
-            </ControlRow>
+            </ControlRow> */}
             <ControlRow>
-              <Label>Light Mode</Label>
+              <Label>黑白模式切换</Label>
               <Detail>
                 <AccentSlider
                   onChange={() => dispatch(toggleThemeMode())}
@@ -130,7 +130,7 @@ export const Settings = () => {
               </Detail>
             </ControlRow>
             <ControlRow>
-              <Label>Keycap Theme</Label>
+              <Label>主题</Label>
               <Detail>
                 <AccentSelect
                   defaultValue={themeDefaultValue}
@@ -142,7 +142,7 @@ export const Settings = () => {
               </Detail>
             </ControlRow>
             <ControlRow>
-              <Label>Render Mode</Label>
+              <Label>2D/3D</Label>
               <Detail>
                 <AccentSelect
                   defaultValue={renderModeDefaultValue}
@@ -153,8 +153,8 @@ export const Settings = () => {
                 />
               </Detail>
             </ControlRow>
-            <ControlRow>
-              <Label>Show Diagnostic Information</Label>
+            {/* <ControlRow>
+              <Label>显示诊断信息</Label>
 
               <Detail>
                 {selectedDevice ? (
@@ -168,7 +168,7 @@ export const Settings = () => {
                   </SettingsErrorMessage>
                 )}
               </Detail>
-            </ControlRow>
+            </ControlRow> */}
           </Container>
           {showDiagnostics && selectedDevice ? (
             <DiagnosticContainer>

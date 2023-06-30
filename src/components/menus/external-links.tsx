@@ -14,7 +14,7 @@ const ExternalLinkContainer = styled.span`
 
 export const ExternalLinks = () => (
   <ExternalLinkContainer>
-    <a href="https://caniusevia.com/" target="_blank">
+    {/* <a href="https://caniusevia.com/" target="_blank">
       <CategoryIconContainer>
         <VIALogo height="25px" fill="currentColor" />
         <CategoryMenuTooltip>Firmware + Docs</CategoryMenuTooltip>
@@ -31,6 +31,6 @@ export const ExternalLinks = () => (
         <FontAwesomeIcon size={'xl'} icon={faGithub} />
         <CategoryMenuTooltip>Github</CategoryMenuTooltip>
       </CategoryIconContainer>
-    </a>
+    </a> */}
   </ExternalLinkContainer>
 );

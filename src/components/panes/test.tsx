@@ -130,7 +130,7 @@ export const Test: FC = () => {
             <Row $selected={true}>
               <IconContainer>
                 <FontAwesomeIcon icon={faCircleQuestion} />
-                <MenuTooltip>Check Key</MenuTooltip>
+                <MenuTooltip>按键测试</MenuTooltip>
               </IconContainer>
             </Row>
           </MenuContainer>
@@ -138,16 +138,16 @@ export const Test: FC = () => {
         <SpanOverflowCell>
           <Container>
             <ControlRow>
-              <Label>Reset Keyboard</Label>
+              <Label>重置键盘</Label>
               <Detail>
                 <AccentButton onClick={testContextObj.clearTestKeys}>
-                  Reset
+                  重置
                 </AccentButton>
               </Detail>
             </ControlRow>
             {canUseMatrixState && selectedDefinition ? (
               <ControlRow>
-                <Label>Test Matrix</Label>
+                <Label>测试矩阵</Label>
                 <Detail>
                   <AccentSlider
                     isChecked={isTestMatrixEnabled}
@@ -160,7 +160,7 @@ export const Test: FC = () => {
               </ControlRow>
             ) : null}
             <ControlRow>
-              <Label>Key Sounds</Label>
+              <Label>按键声音</Label>
               <Detail>
                 <AccentSlider
                   isChecked={testKeyboardSoundsSettings.isEnabled}
@@ -175,7 +175,7 @@ export const Test: FC = () => {
               </Detail>
             </ControlRow>
             <ControlRow>
-              <Label>Volume</Label>
+              <Label>音量</Label>
               <Detail>
                 <AccentRange
                   max={100}
@@ -191,8 +191,8 @@ export const Test: FC = () => {
                 />
               </Detail>
             </ControlRow>
-            <ControlRow>
-              <Label>Transpose</Label>
+            {/* <ControlRow>
+              <Label>转置</Label>
               <Detail>
                 <AccentRange
                   max={24}
@@ -207,9 +207,9 @@ export const Test: FC = () => {
                   }}
                 />
               </Detail>
-            </ControlRow>
-            <ControlRow>
-              <Label>Waveform</Label>
+            </ControlRow> */}
+            {/* <ControlRow>
+              <Label>波形</Label>
               <Detail>
                 <AccentSelect
                   isSearchable={false}
@@ -225,8 +225,8 @@ export const Test: FC = () => {
                   }}
                 />
               </Detail>
-            </ControlRow>
-            <ControlRow>
+            </ControlRow> */}
+            {/* <ControlRow>
               <Label>Mode</Label>
               <Detail>
                 <AccentSelect
@@ -243,7 +243,7 @@ export const Test: FC = () => {
                   }}
                 />
               </Detail>
-            </ControlRow>
+            </ControlRow> */}
           </Container>
         </SpanOverflowCell>
       </Grid>

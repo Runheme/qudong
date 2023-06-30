@@ -17,7 +17,7 @@ export default [
     key: 'default',
     component: ConfigurePane,
     icon: faKeyboard,
-    title: 'Configure',
+    title: '功能',
     path: '/',
   },
   {
@@ -25,7 +25,7 @@ export default [
     component: Test,
     icon: faStethoscope,
     path: '/test',
-    title: 'Key Tester',
+    title: '按键测试',
   },
   {
     key: 'design',
@@ -39,14 +39,14 @@ export default [
     component: Settings,
     icon: faGear,
     path: '/settings',
-    title: 'Settings',
+    title: '设置',
   },
   {
     key: 'debug',
     icon: faBug,
     component: Debug,
     path: '/debug',
-    title: 'Debug',
+    title: '调试',
   },
   ErrorsPaneConfig,
 ];
