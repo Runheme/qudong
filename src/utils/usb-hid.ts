@@ -11,7 +11,7 @@ export async function scanDevices(
   return HID.devices(forceRequest);
 }
 
-// TODO: fix typing. This actually returns a HID object, but it complains if you type it as such.
+// TODO: 解决打字。这实际上返回一个HID对象，但如果您这样键入它，它会报错。
 export function initAndConnectDevice({path}: Pick<Device, 'path'>): Device {
   const device = new HID.HID(path);
   return device;
