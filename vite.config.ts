@@ -30,7 +30,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['@the-via/reader'],
+    include: ['@Runheme/qudong-reader'],
     esbuildOptions: {
       // Node.js global to browser globalThis
       define: {
