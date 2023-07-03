@@ -31,7 +31,7 @@ const tagDevice = (device: HIDDevice): WebVIADevice => {
   const HIDDevice = {
     _device: device,
     usage: 0x61,
-    usagePage: 0xff61,
+    usagePage: 0xff60,
     interface: 0x0001,
     vendorId: device.vendorId ?? -1,
     productId: device.productId ?? -1,
